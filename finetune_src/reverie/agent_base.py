@@ -28,7 +28,7 @@ class BaseAgent(object):
     def get_results(self, detailed_output=False):
         output = []
         for k, v in self.results.items():
-            output.append({'instr_id': k, 'trajectory': v['path'], 'predObjId': v['pred_objid']})
+            output.append({'instr_id': k, 'trajectory': v['path'], 'pred_objid': v['pred_objid']})
             if detailed_output:
                 output[-1]['details'] = v['details']
         return output

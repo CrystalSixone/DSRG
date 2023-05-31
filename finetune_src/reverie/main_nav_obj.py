@@ -278,6 +278,8 @@ def valid(args, train_env, val_envs, rank=-1):
                 write_to_record_file(loss_str+'\n', record_file)
 
             if args.submit:
+                for item in preds:
+                    item['predObjId'] = item.pop('pred_objid') # convert to submit format
                 json.dump(
                     preds, open(output_file, 'w'),
                     sort_keys=True, indent=4, separators=(',', ': ')
