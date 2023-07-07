@@ -171,7 +171,7 @@ class GMapObjectNavAgent(Seq2SeqAgent):
             )
 
             gmap_pair_dists = np.zeros((len(gmap_vpids), len(gmap_vpids)), dtype=np.float32)
-            for i in range(1, len(gmap_vpids)):
+            for i in range(2, len(gmap_vpids)):
                 for j in range(i+1, len(gmap_vpids)):
                     gmap_pair_dists[i, j] = gmap_pair_dists[j, i] = \
                         gmap.graph.distance(gmap_vpids[i], gmap_vpids[j])
@@ -187,6 +187,7 @@ class GMapObjectNavAgent(Seq2SeqAgent):
         # collate
         batch_gmap_lens = torch.LongTensor(batch_gmap_lens)
         batch_gmap_masks = gen_seq_masks(batch_gmap_lens).cuda()
+        batch_gmap_masks[:,1] = False
         batch_gmap_img_embeds = pad_tensors_wgrad(batch_gmap_img_embeds)
         batch_gmap_step_ids = pad_sequence(batch_gmap_step_ids, batch_first=True).cuda()
         batch_gmap_pos_fts = pad_tensors(batch_gmap_pos_fts).cuda()

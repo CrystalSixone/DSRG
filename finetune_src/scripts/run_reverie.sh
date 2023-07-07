@@ -40,7 +40,7 @@ flag="--root_dir ${DATA_ROOT}
       --max_instr_len 200
       --max_objects 20
 
-      --batch_size 4
+      --batch_size 8
       --lr 1e-5
       --iters 200000
       --log_every 1000
