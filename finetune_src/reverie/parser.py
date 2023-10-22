@@ -142,13 +142,13 @@ def postprocess_args(args):
         'vitbase': 'obj.avg.top3.min80_vit_base_patch16_224_imagenet.hdf5'
     }
     args.obj_ft_file = os.path.join(ROOTDIR, 'REVERIE', 'features', obj_ft_file_map[args.obj_features])
-    args.obj_v2_ft_file = os.path.join(ROOTDIR, 'REVERIE', 'features', 'object_bbox_v2.json')
+    args.obj_v2_ft_file = os.path.join(ROOTDIR, 'R2R', 'features', 'object_bbox_v2.json')
     
     args.connectivity_dir = os.path.join(ROOTDIR, 'R2R', 'connectivity')
     args.scan_data_dir = os.path.join(ROOTDIR, 'Matterport3D', 'v1_unzip_scans')
 
     args.anno_dir = os.path.join(ROOTDIR, 'REVERIE', 'annotations')
-    args.cat_file = os.path.join(ROOTDIR,'REVERIE','annotations','category_mapping.tsv')
+    args.cat_file = os.path.join(ROOTDIR,'R2R','annotations','category_mapping.tsv')
 
     # Build paths
     if 'navigator' in args.train:
