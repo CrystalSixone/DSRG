@@ -14,7 +14,9 @@ Vision-and-Language Navigation (VLN) is a realistic but challenging task that re
 
 2. Some requirements are updated in this project. Please refer to our `requirements.txt`.
 
-3. Download [category_mapping.tsv](https://www.dropbox.com/s/i5fid7fcaie2xpm/category_mapping.tsv?dl=0) and [object_bbox_v2.json](https://www.dropbox.com/s/rvt6xdf42ah2d8b/object_bbox_v2.json?dl=0) for object features and put them to `datasets\R2R\annotations`.
+3. Download [category_mapping.tsv](https://www.dropbox.com/s/i5fid7fcaie2xpm/category_mapping.tsv?dl=0) and put it to `datasets\R2R\annotations`. 
+
+4. Download [object_bbox_v2.json](https://www.dropbox.com/s/rvt6xdf42ah2d8b/object_bbox_v2.json?dl=0) for fine-grained object features and put them to `datasets\REVERIE\features`.
 
 4. (Optional) Download [pretrained weights](https://www.dropbox.com/scl/fo/fn4mp70wsa21og3zbk8jm/h?dl=0&rlkey=12m8oghwmki0kt9iutzv3tzlv) for R2R and REVERIE.
 
