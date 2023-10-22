@@ -1,4 +1,6 @@
-import os, sys
+import os,sys
+root_path = os.getcwd()
+
 import json
 import jsonlines
 import h5py
@@ -171,7 +173,12 @@ def get_angle_fts(headings, elevations, angle_feat_size):
 
 class PickSpecificWords():
     def __init__(self, cat_file=None):
-        self.bert_tok = DistilBertTokenizer.from_pretrained("distilbert-base-uncased")
+        try:
+            self.bert_tok = DistilBertTokenizer.from_pretrained("distilbert-base-uncased")
+        except Exception:
+            distilbert_path = os.path.join(root_path,'datasets','pretrained','distilbert-base-uncased')
+            tok = bert_tok = DistilBertTokenizer.from_pretrained(distilbert_path)
+            
         self.anno_path = 'datasets/R2R/annotations/R2R_%s_enc.json'
         self.spacy_model = spacy.load("en_core_web_sm")
         self.action_list = [

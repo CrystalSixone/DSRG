@@ -28,7 +28,11 @@ from reverie.env import ReverieObjectNavBatch
 from reverie.parser import parse_args
 
 def build_dataset(args, rank=0):
-    tok = bert_tok = DistilBertTokenizer.from_pretrained("distilbert-base-uncased")
+    try:
+        tok = bert_tok = DistilBertTokenizer.from_pretrained("distilbert-base-uncased")
+    except Exception:
+        distilbert_path = os.path.join(root_path,'datasets','pretrained','distilbert-base-uncased')
+        tok = bert_tok = DistilBertTokenizer.from_pretrained(distilbert_path)
 
     feat_db = ImageFeaturesDB(args.img_ft_file, args.image_feat_size)
     obj_db = ObjectFeatureDB(args.obj_ft_file, args.obj_feat_size) # REVERIE original
