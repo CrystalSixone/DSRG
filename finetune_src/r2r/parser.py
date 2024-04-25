@@ -146,6 +146,7 @@ def postprocess_args(args):
     args.anno_dir = os.path.join(ROOTDIR, 'R2R', 'annotations')
 
     args.obj_ft_file = os.path.join(ROOTDIR, 'REVERIE', 'features', 'object_bbox_v2.json')
+    args.cat_file = os.path.join(ROOTDIR, 'R2R', 'annotations', 'category_mapping.tsv')
 
     # Build paths
     if 'navigator' in args.train:

@@ -27,34 +27,31 @@ from optim.misc import build_optimizer
 from parser import load_parser, parse_with_config, postprocess_args
 
 from data.loader import MetaLoader, PrefetchLoader, build_dataloader
-from pretrain_src.data.dataset import R2RTextPathData
+from data.dataset import R2RTextPathData
 from data.tasks import (
     MlmDataset, mlm_collate,
     MrcDataset, mrc_collate,
     SapDataset, sap_collate)
 
-from data.tasks import PickSpecificWords
-
-from pretrain_src.model.pretrain_cmt import GlocalTextPathCMTPreTraining
+from model.pretrain_cmt import GlocalTextPathCMTPreTraining
 
 
 def create_dataloaders(
     data_cfg, nav_db, tok, is_train: bool, device: torch.device, opts
 ):  
-    word_picker = PickSpecificWords(cat_file=nav_db.args.cat_file) if nav_db.args.pick_action_object else None
     dataloaders = {}
     for k, task_name in enumerate(data_cfg.tasks):
         if task_name == 'mlm':
-            task_dataset = MlmDataset(nav_db, tok, word_picker)
+            task_dataset = MlmDataset(nav_db, tok)
             task_collate_fn = mlm_collate
         elif task_name == 'mrc':
-            task_dataset = MrcDataset(nav_db, tok, opts.mrc_mask_prob, end_vp_pos_ratio=0.2, word_picker=word_picker)
+            task_dataset = MrcDataset(nav_db, tok, opts.mrc_mask_prob, end_vp_pos_ratio=0.2)
             task_collate_fn = mrc_collate
         elif task_name == 'sap':
-            task_dataset = SapDataset(nav_db, tok, end_vp_pos_ratio=0.2, word_picker=word_picker)
+            task_dataset = SapDataset(nav_db, tok, end_vp_pos_ratio=0.2)
             task_collate_fn = sap_collate
         else:
-            raise ValueError(f'Undefined task {task}')
+            raise ValueError(f'Undefined task {task_name}')
 
         LOGGER.info(f"{task_name}: {len(task_dataset)} samples loaded")
 

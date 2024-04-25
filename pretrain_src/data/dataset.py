@@ -112,7 +112,7 @@ class ReverieTextPathData(object):
             with jsonlines.open(anno_file, 'r') as f:
                 for i, item in enumerate(f):
                     self.data.append(item)
-                    item['instr'] = self.tok.decode(item['instr_encoding'],skip_special_tokens=True)
+                    # item['instr'] = self.tok.decode(item['instr_encoding'],skip_special_tokens=True) #!!!
                     if self.args.debug and i >= 50:
                         break
 
@@ -286,7 +286,7 @@ class ReverieTextPathData(object):
 
         outs = {
             'instr_id': item['instr_id'],
-            'instr': item['instr'][:self.max_txt_len],
+            # 'instr': item['instr'][:self.max_txt_len],
             'instr_encoding': item['instr_encoding'][:self.max_txt_len],
             
             'traj_view_img_fts': [x[:, :self.image_feat_size] for x in traj_view_img_fts],

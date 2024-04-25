@@ -27,14 +27,14 @@ from optim.misc import build_optimizer
 from parser import load_parser, parse_with_config
 
 from data.loader import MetaLoader, PrefetchLoader, build_dataloader
-from pretrain_src.data.dataset import ReverieTextPathData
+from data.dataset import ReverieTextPathData
 from data.tasks import (
     MlmDataset, mlm_collate,
     MrcDataset, mrc_collate,
     SapDataset, sap_collate,
     OGDataset, og_collate)
 
-from pretrain_src.model.pretrain_cmt_reverie import GlocalTextPathCMTPreTraining
+from model.pretrain_cmt_reverie import GlocalTextPathCMTPreTraining
 
 def create_dataloaders(
     data_cfg, nav_db, tok, is_train: bool, device: torch.device, opts
@@ -54,7 +54,7 @@ def create_dataloaders(
             task_dataset = OGDataset(nav_db, tok)
             task_collate_fn = og_collate
         else:
-            raise ValueError(f'Undefined task {task}')
+            raise ValueError(f'Undefined task {task_name}')
 
         LOGGER.info(f"{task_name}: {len(task_dataset)} samples loaded")
 

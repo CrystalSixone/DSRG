@@ -80,7 +80,7 @@ class GlocalTextPathCMTPreTraining(BertPreTrainedModel):
                 batch['gmap_lens'], batch['gmap_step_ids'], batch['gmap_pos_fts'], 
                 batch['gmap_pair_dists'], batch['gmap_vpids'], batch['vp_pos_fts'],
                 batch['txt_labels'], compute_loss,
-                batch['traj_vp_objv2_fts'], batch['traj_vp_objv2_lens'],
+                batch['traj_objv2_fts'], batch['traj_objv2_lens'],
                 batch['act_txt_ids'], batch['obj_txt_ids'],
                 batch['act_lens'], batch['obj_lens']
             )
@@ -94,7 +94,7 @@ class GlocalTextPathCMTPreTraining(BertPreTrainedModel):
                 batch['gmap_pair_dists'], batch['gmap_vpids'], batch['vp_pos_fts'],
                 batch['vp_view_mrc_masks'], batch['vp_view_probs'], 
                 batch['vp_obj_mrc_masks'], batch['vp_obj_probs'], compute_loss,
-                batch['traj_vp_objv2_fts'], batch['traj_vp_objv2_lens'],
+                batch['traj_objv2_fts'], batch['traj_objv2_lens'],
                 batch['act_txt_ids'], batch['obj_txt_ids'],
                 batch['act_lens'], batch['obj_lens']
             )
@@ -108,7 +108,7 @@ class GlocalTextPathCMTPreTraining(BertPreTrainedModel):
                 batch['gmap_pair_dists'], batch['gmap_vpids'], batch['vp_pos_fts'],
                 batch['gmap_visited_masks'],
                 batch['global_act_labels'], batch['local_act_labels'], compute_loss,
-                batch['traj_vp_objv2_fts'], batch['traj_vp_objv2_lens'],
+                batch['traj_objv2_fts'], batch['traj_objv2_lens'],
                 batch['act_txt_ids'], batch['obj_txt_ids'],
                 batch['act_lens'], batch['obj_lens']
             )
@@ -121,7 +121,7 @@ class GlocalTextPathCMTPreTraining(BertPreTrainedModel):
                 batch['gmap_lens'], batch['gmap_step_ids'], batch['gmap_pos_fts'], 
                 batch['gmap_pair_dists'], batch['gmap_vpids'], batch['vp_pos_fts'],
                 batch['obj_labels'], compute_loss,
-                batch['traj_vp_objv2_fts'], batch['traj_vp_objv2_lens'],
+                batch['traj_objv2_fts'], batch['traj_objv2_lens'],
                 batch['act_txt_ids'], batch['obj_txt_ids'],
                 batch['act_lens'], batch['obj_lens']
             )
